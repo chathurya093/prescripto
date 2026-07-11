@@ -11,6 +11,11 @@ const app = express()
 const port = process.env.PORT || 5000
 connectDB()
 
+if (!process.env.JWT_SECRET) {
+    console.warn("WARNING: JWT_SECRET environment variable is missing. Using fallback secret.");
+    process.env.JWT_SECRET = 'supersecretjwtsecretkey';
+}
+
 // Middlewares
 app.use(express.json())
 app.use(cors())
