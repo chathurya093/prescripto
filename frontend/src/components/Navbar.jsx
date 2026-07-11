@@ -38,7 +38,7 @@ const Navbar = () => {
       </ul>
 
       <div className='flex items-center gap-4'>
-        <a href='http://localhost:5174' target='_blank' rel='noopener noreferrer' className='border px-5 text-xs py-1.5 rounded-full hidden md:block'>Admin Panel</a>
+        <a href={import.meta.env.VITE_ADMIN_URL || 'http://localhost:5174'} target='_blank' rel='noopener noreferrer' className='border px-5 text-xs py-1.5 rounded-full hidden md:block'>Admin Panel</a>
         {token ? (
           <div className='flex items-center gap-2 cursor-pointer group relative'>
             <img className='w-8 rounded-full' src={assets.profile_pic} alt="Profile" />
