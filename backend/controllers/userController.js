@@ -21,6 +21,12 @@ const registerUser = async (req, res) => {
             return res.json({ success: false, message: "Enter a strong password" });
         }
 
+        // Checking if user already exists
+        const exists = await userModel.findOne({ email });
+        if (exists) {
+            return res.json({ success: false, message: "User already exists" });
+        }
+
         // Hashing user password
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
